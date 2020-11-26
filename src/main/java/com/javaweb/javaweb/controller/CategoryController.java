@@ -9,25 +9,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.javaweb.javaweb.entities.Order;
-import com.javaweb.javaweb.service.OrderService;
+import com.javaweb.javaweb.entities.Category;
+import com.javaweb.javaweb.service.CategoryService;
 
 @RestController
-@RequestMapping(value = "/orders")
-public class OrderController {
+@RequestMapping(value = "/Categories")
+public class CategoryController {
 
 	@Autowired
-	private OrderService service;
+	private CategoryService service;
 
 	@RequestMapping(method = RequestMethod.GET)
-	public ResponseEntity<List<Order>> findAll() {
-		List<Order> orders = service.findAll();
-		return ResponseEntity.ok().body(orders);
+	public ResponseEntity<List<Category>> findAll() {
+		List<Category> categories = service.findAll();
+		return ResponseEntity.ok().body(categories);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
-	public ResponseEntity<Order> findById(@PathVariable Long id) {
-		Order order = service.findById(id);
-		return ResponseEntity.ok().body(order);
+	public ResponseEntity<Category> findById(@PathVariable Long id) {
+		Category category = service.findById(id);
+		return ResponseEntity.ok().body(category);
 	}
 }

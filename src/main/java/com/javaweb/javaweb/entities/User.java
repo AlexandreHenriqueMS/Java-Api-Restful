@@ -1,12 +1,17 @@
 package com.javaweb.javaweb.entities;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "tb_user")
@@ -22,14 +27,18 @@ public class User implements Serializable {
 	private String phone;
 	private String password;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "client")
+	private List<Order> order = new ArrayList<>();
+
 	public User() {
 	}
 
 	public User(String name, String email, String phone, String password) {
-		this.name = name;
-		this.email = email;
-		this.phone = phone;
-		this.password = password;
+		setName(name);
+		setEmail(email);
+		setPhone(phone);
+		setPassword(password);
 	}
 
 	public Long getId() {
@@ -66,6 +75,14 @@ public class User implements Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
 	}
 
 	@Override
