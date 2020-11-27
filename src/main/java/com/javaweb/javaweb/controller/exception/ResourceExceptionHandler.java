@@ -16,18 +16,20 @@ import com.javaweb.javaweb.service.exception.ResourceNotFoundException;
 public class ResourceExceptionHandler {
 
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e,HttpServletRequest request){
+	public ResponseEntity<StandardError> resourceNotFound(ResourceNotFoundException e, HttpServletRequest request) {
 		String error = "Resource not found";
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),
+				request.getRequestURI());
 		return ResponseEntity.status(status.value()).body(err);
 	}
-	
+
 	@ExceptionHandler(DatabaseException.class)
-	public ResponseEntity<StandardError> dataBase(DatabaseException e,HttpServletRequest request){
+	public ResponseEntity<StandardError> dataBase(DatabaseException e, HttpServletRequest request) {
 		String error = "Database error";
 		HttpStatus status = HttpStatus.BAD_REQUEST;
-		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(),
+				request.getRequestURI());
 		return ResponseEntity.status(status.value()).body(err);
 	}
 }

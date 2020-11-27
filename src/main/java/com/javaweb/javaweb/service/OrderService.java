@@ -20,6 +20,5 @@ public class OrderService {
 
 	public Order findById(Long id) {
 		return repository.findById(id).get();
-
 	}
 }
