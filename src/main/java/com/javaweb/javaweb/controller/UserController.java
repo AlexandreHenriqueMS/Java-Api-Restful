@@ -21,13 +21,13 @@ public class UserController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity<List<User>> findAll() {
-		List<User> users = service.findAll();
-		return ResponseEntity.ok().body(users);
+		List<User> objs = service.findAll();
+		return ResponseEntity.ok().body(objs);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<User> findById(@PathVariable Long id) {
-		User user = service.findById(id);
-		return ResponseEntity.ok().body(user);
+		User obj = service.findById(id);
+		return ResponseEntity.ok().body(obj);
 	}
 }

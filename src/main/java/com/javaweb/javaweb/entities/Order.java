@@ -29,16 +29,16 @@ public class Order implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "client_id")
-	private User user;
+	private User client;
 
 	private Integer orderStatus;
 
 	public Order() {
 	}
 
-	public Order(Instant moment, User user, OrderStatus orderStatus) {
+	public Order(Instant moment, User client, OrderStatus orderStatus) {
 		setMoment(moment);
-		setUser(user);
+		setUser(client);
 		setOrderStatus(orderStatus);
 	}
 
@@ -59,11 +59,11 @@ public class Order implements Serializable {
 	}
 
 	public User getUser() {
-		return user;
+		return client;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUser(User client) {
+		this.client = client;
 	}
 
 	public OrderStatus getOrderStatus() {
